@@ -1,0 +1,7 @@
+Django
+django-braces
+django-environ
+django-model-utils
+Pillow
+psycopg2
+stripe

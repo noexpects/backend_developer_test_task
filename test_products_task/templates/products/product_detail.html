@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1>{{ product.name }}</h1>
+<img src="{{product.image.url}}" alt="No photo">
+<h3>Price: {{ product.price }} USD</h3>
+    <br>
+<h3>Description:</h3>
+<h4>{{ product.description }}</h4>
+
+<button data-url="{% url 'products:like_toggle' product.id %}" id="like">Like</button>
+<h6>Likes <span id="likes-counter">{{ product.likes.count }}</span></h6>
+
+<ul class="list-group">
+    {% for date, count in likes.items %}
+        <li class="list-group-item">{{ date }} - {{ count }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Comments</h3>
+<ul class="list-group">
+{% for comment in comments %}
+    <li class="list-group-item">
+        <div>
+            {% if comment.user.username  %}<h5>{{ comment.user.username }}</h5>
+            {% else %} <h5>Anonymus</h5>
+            {% endif %}
+            {{ comment.created }}
+            <h4>{{ comment.text }}</h4>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+<form action="{% url 'products:create_comment' product.id %}" method="post">
+    <div>
+        <textarea name="text" id="comments" style="font-family:sans-serif;font-size:1.2em;" rows="5" cols="100" maxlength="500"></textarea>
+    </div>
+    <br>
+    <input type="submit" value="Leave Comment">
+</form>
+    <h2></h2>
+{% endblock content %}

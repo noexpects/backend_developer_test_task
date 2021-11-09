@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ category.name }}</h2>
+    <div class="list-group">
+    {% for product in related_products %}
+        <a href="{{ product.get_absolute_url }}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ product.name }} </h4>
+            <img src="{{product.image.url}}" alt="No photo" height="255">
+            <br>
+            <br>
+            <p class="list-group-item-text">Price: {{ product.price }} USD</p>
+            <p>Likes: {{ product.likes.count }}</p>
+        </a>
+    {% endfor %}
+    </div>
+    <br>
+    <div class="pagination" >
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1"><button>&laquo; first</button></a>
+            <a href="?page={{ page_obj.previous_page_number }}"><button>Previous</button></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"><button>Next</button></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}"><button>Last &raquo;</button></a>
+        {% endif %}
+    </span>
+    </div>
+{% endblock content %}
