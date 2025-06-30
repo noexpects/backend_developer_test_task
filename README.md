@@ -24,3 +24,4 @@
 * Add the ability to comment products on their respective pages and display all recent comments (for the span of last 24 hours). The comment length should be limited to 500 symbols. Authorization should not be required, comments must be flat - ,no replies needed. 
 * Add all models to the admin interface and make sure that the ‘view on site’ button works properly.
 
+another new line
