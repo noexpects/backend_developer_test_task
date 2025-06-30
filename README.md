@@ -25,3 +25,5 @@
 * Add all models to the admin interface and make sure that the ‘view on site’ button works properly.
 
 some new line
+another new line
+
